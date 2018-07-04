@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-![Demo](https://image.ibb.co/dmtKCJ/ezgif_com_video_to_gif.gif)
+<img src="https://image.ibb.co/dmtKCJ/ezgif_com_video_to_gif.gif" width="360" height="640" />
 
 ## Getting Started
 

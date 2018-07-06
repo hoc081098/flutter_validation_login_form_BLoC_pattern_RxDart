@@ -113,6 +113,7 @@ class _LoginPageState extends State<LoginPage> {
         child: new StreamBuilder<bool>(
           stream: _bloc.validSubmit,
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            debugPrint('Call builder');
             return MaterialButton(
               splashColor: Colors.white70,
               color: Colors.lightBlueAccent.shade400,
@@ -130,6 +131,7 @@ class _LoginPageState extends State<LoginPage> {
     return StreamBuilder<bool>(
       stream: _bloc.isLoading,
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+        debugPrint('Call builder');
         return Opacity(
           opacity: snapshot.data ? 1.0 : 0.0,
           child: CircularProgressIndicator(),
@@ -142,6 +144,7 @@ class _LoginPageState extends State<LoginPage> {
     return StreamBuilder<String>(
       stream: _bloc.passwordStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
+        debugPrint('Call builder');
         return TextField(
           keyboardType: TextInputType.text,
           obscureText: true,
@@ -160,6 +163,7 @@ class _LoginPageState extends State<LoginPage> {
     return StreamBuilder<String>(
       stream: _bloc.emailStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
+        debugPrint('Call builder');
         return TextField(
           keyboardType: TextInputType.emailAddress,
           maxLines: 1,

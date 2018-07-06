@@ -49,12 +49,12 @@ class Bloc {
 
   // streams
   Stream<String> get emailStream =>
-      _emailController.stream.transform(_emailTransformer);
+      _emailController.stream.transform(_emailTransformer).distinct();
 
   Stream<String> get passwordStream =>
-      _passwordController.stream.transform(_passwordTransformer);
+      _passwordController.stream.transform(_passwordTransformer).distinct();
 
-  Stream<bool> get isLoading => _loadingController.stream;
+  Stream<bool> get isLoading => _loadingController.stream.distinct();
 
   Stream<Response> results;
 
@@ -76,13 +76,15 @@ class Bloc {
               .doOnListen(() => _loadingController.add(true))
               .doOnEach((_) => _loadingController.add(false)),
         );
-    validSubmit = Observable.combineLatest3(
-      _emailController.map(_isValidEmail),
-      _passwordController.map(_isValidPassword),
-      isLoading,
-      (isValidEmail, isValidPassword, isLoading) =>
-          isValidEmail && isValidPassword && !isLoading,
-    );
+    validSubmit = Observable
+        .combineLatest3(
+          _emailController.map(_isValidEmail),
+          _passwordController.map(_isValidPassword),
+          _loadingController,
+          (isValidEmail, isValidPassword, isLoading) =>
+              isValidEmail && isValidPassword && !isLoading,
+        )
+        .distinct();
   }
 
   dispose() {

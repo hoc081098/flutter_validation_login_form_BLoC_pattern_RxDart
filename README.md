@@ -2,7 +2,11 @@
 
 A new Flutter project.
 
-<img src="https://image.ibb.co/dmtKCJ/ezgif_com_video_to_gif.gif" width="360" height="640" />
+[Video demo](https://www.youtube.com/watch?v=i5gS2BToNZs&feature=youtu.be)
+
+<br>
+
+<img src="screenshots/demo.gif" width="480" alt="Cannot load image"/>
 
 ## Getting Started
 

@@ -1,4 +1,4 @@
-package com.example.validationformbloc;
+package com.hoc.validationformbloc;
 
 import android.os.Bundle;
 

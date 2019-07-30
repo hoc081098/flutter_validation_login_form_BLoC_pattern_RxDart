@@ -1,4 +1,4 @@
-import 'package:validation_form_bloc/model.dart';
+import 'package:validation_form_bloc/api/response.dart';
 
 ///
 /// Login api
@@ -9,7 +9,9 @@ class LoginApi {
   ///
   /// Simulate login
   ///
-  Future<Response> login(Credential credential) {
+  Future<LoginResponse> login(String email, String password) {
+    print('[API] login email=$email, password=$password');
+
     final token =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibm'
         'FtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';

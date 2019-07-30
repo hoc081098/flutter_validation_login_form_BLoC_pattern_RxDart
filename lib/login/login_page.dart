@@ -49,6 +49,9 @@ class _LoginPageState extends State<LoginPage> {
     if (message is LoginErrorMessage) {
       _showSnackBar(message.error.toString());
     }
+    if (message is InvalidInformationMessage) {
+      _showSnackBar('Invalid information');
+    }
   }
 
   @override
@@ -109,24 +112,18 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildLoginButton() {
-    return Container(
+    return SizedBox(
       width: double.infinity,
-      child: StreamBuilder<bool>(
-        initialData: _loginBloc.isValidSubmit$.value,
-        stream: _loginBloc.isValidSubmit$,
-        builder: (context, snapshot) {
-          return RaisedButton(
-            padding: const EdgeInsets.all(16),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4),
-            ),
-            elevation: 8,
-            splashColor: Colors.cyanAccent.shade100,
-            color: Colors.cyan.shade400,
-            child: Text('Login'),
-            onPressed: snapshot.data ? _loginBloc.submitLogin : null,
-          );
-        },
+      child: RaisedButton(
+        padding: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        elevation: 8,
+        splashColor: Colors.cyanAccent.shade100,
+        color: Colors.cyan.shade400,
+        child: Text('Login'),
+        onPressed: _loginBloc.submitLogin,
       ),
     );
   }

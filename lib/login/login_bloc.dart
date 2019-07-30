@@ -24,7 +24,6 @@ class LoginBloc {
   ///
   final Stream<String> emailError$;
   final Stream<String> passwordError$;
-  final ValueObservable<bool> isValidSubmit$;
   final ValueObservable<bool> isLoading$;
   final Stream<LoginMessage> message$;
 
@@ -41,7 +40,6 @@ class LoginBloc {
     @required this.passwordError$,
     @required this.isLoading$,
     @required this.message$,
-    @required this.isValidSubmit$,
     @required this.dispose,
   });
 
@@ -87,7 +85,7 @@ class LoginBloc {
     final isValidSubmit$ = Observable.combineLatest(
       [emailError$, passwordError$],
       (errors) => errors.every((e) => e == null),
-    );
+    ).share();
 
     final submit$ = submitLoginSubject.stream
         .withLatestFrom(isValidSubmit$, (_, bool isValid) => isValid)
@@ -109,11 +107,11 @@ class LoginBloc {
         submit$
             .where((isValid) => isValid)
             .withLatestFrom(credential$, (_, Credential c) => c)
-            .switchMap((credential) =>
+            .exhaustMap((credential) =>
                 interactor.performLogin(credential, isLoadingSubject)),
         submit$
             .where((isValid) => !isValid)
-            .map((_) => const InvalidInformationMessage())
+            .map((_) => const InvalidInformationMessage()),
       ],
     ).publish();
 
@@ -147,7 +145,6 @@ class LoginBloc {
       passwordError$: passwordError$,
       isLoading$: isLoadingSubject.stream,
       message$: message$,
-      isValidSubmit$: isValidSubmit$,
       dispose: disposeBag.dispose,
     );
   }

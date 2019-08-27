@@ -8,6 +8,9 @@ class Credential {
   final String password;
 
   const Credential({this.email, this.password});
+
+  @override
+  String toString() => 'Credential{email: $email, password: $password}';
 }
 
 ///

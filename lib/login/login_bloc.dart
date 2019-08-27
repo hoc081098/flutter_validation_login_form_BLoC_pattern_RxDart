@@ -46,18 +46,13 @@ class LoginBloc {
   factory LoginBloc(LoginInteractor interactor) {
     assert(interactor != null);
 
-    ///
-    /// Stream controllers
-    ///
+    // Stream controllers
     final emailSubject = BehaviorSubject.seeded('');
     final passwordSubject = BehaviorSubject.seeded('');
     final isLoadingSubject = BehaviorSubject.seeded(false);
     final submitLoginSubject = PublishSubject<void>();
 
-    ///
-    /// Email error and password error stream
-    ///
-
+    // Email error and password error stream
     final emailError$ = emailSubject.stream
         .map((email) {
           if (Validator.isValidEmail(email)) {
@@ -78,10 +73,7 @@ class LoginBloc {
         .distinct()
         .share();
 
-    ///
-    /// Submit, credential stream
-    ///
-
+    // Submit, credential stream
     final isValidSubmit$ = Observable.combineLatest(
       [emailError$, passwordError$],
       (errors) => errors.every((e) => e == null),
@@ -91,34 +83,32 @@ class LoginBloc {
         .withLatestFrom(isValidSubmit$, (_, bool isValid) => isValid)
         .share();
 
-    final credential$ = Observable.combineLatest2(
-      emailSubject,
-      passwordSubject,
-      (String email, String password) =>
-          Credential(email: email, password: password),
-    );
-
-    ///
-    /// Message stream
-    ///
-
+    // Message stream
     final message$ = Observable.merge(
       [
         submit$
             .where((isValid) => isValid)
-            .withLatestFrom(credential$, (_, Credential c) => c)
-            .exhaustMap((credential) =>
-                interactor.performLogin(credential, isLoadingSubject)),
+            .withLatestFrom2(
+              emailSubject,
+              passwordSubject,
+              (_, email, password) => Credential(
+                email: email,
+                password: password,
+              ),
+            )
+            .exhaustMap(
+              (credential) => interactor.performLogin(
+                credential,
+                isLoadingSubject,
+              ),
+            ),
         submit$
             .where((isValid) => !isValid)
             .map((_) => const InvalidInformationMessage()),
       ],
     ).publish();
 
-    ///
-    /// Listen to debug
-    ///
-
+    // Listen to debug
     final streams = <String, Stream>{
       'emailError': emailError$,
       'passwordError': passwordError$,

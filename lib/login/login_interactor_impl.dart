@@ -13,6 +13,8 @@ class LoginInteractorImpl implements LoginInteractor {
     Credential credential,
     Sink<bool> isLoadingSink,
   ) {
+    print('[LOGIN_INTERACTOR] $credential');
+
     return Observable.defer(() => Stream.fromFuture(
             _api.login(credential.email, credential.password)))
         .doOnListen(() => isLoadingSink.add(true))

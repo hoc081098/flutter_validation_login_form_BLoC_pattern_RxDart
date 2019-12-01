@@ -183,10 +183,10 @@ class _LoginPageState extends State<LoginPage> {
   /// Here, we can return localized description from [errors]
   String _getMessage(Set<ValidationError> errors) {
     if (errors.contains(ValidationError.invalidEmail)) {
-      return '';
+      return 'Invalid email address';
     }
     if (errors.contains(ValidationError.tooShortPassword)) {
-      return '';
+      return 'Password must be at least 6 characters';
     }
     return null;
   }

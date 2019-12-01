@@ -54,6 +54,7 @@ class LoginBloc {
 
     // Submit stream
     final submit$ = submitLoginS
+        .throttleTime(const Duration(milliseconds: 500))
         .withLatestFrom<bool, bool>(
           Observable.combineLatest<Set<ValidationError>, bool>(
             [emailError$, passwordError$],

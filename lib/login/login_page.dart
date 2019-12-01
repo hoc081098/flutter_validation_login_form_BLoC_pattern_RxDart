@@ -182,6 +182,9 @@ class _LoginPageState extends State<LoginPage> {
 
   /// Here, we can return localized description from [errors]
   String _getMessage(Set<ValidationError> errors) {
+    if (errors == null || errors.isEmpty) {
+      return null;
+    }
     if (errors.contains(ValidationError.invalidEmail)) {
       return 'Invalid email address';
     }

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f9ec699-918a-4121-a167-1ee425f5e256" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/login_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/login_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/login_contract.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/login_contract.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/login_interactor_impl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/login_interactor_impl.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,38 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/main.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/login/login_bloc.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="90" column="28" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/login/login_interactor_impl.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -62,6 +27,7 @@
       <find>debugPrint('Call builder');</find>
       <find>StreamBuilder</find>
       <find>new</find>
+      <find>[LOGIN_INTERACTOR]</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Admin\Desktop\flutter_validation_form_BLoC</dir>
@@ -70,6 +36,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Petrus Nguyễn Thái Học &lt;hoc081098@gmail.com&gt;" />
         <option value="Peter Hoc &lt;hoc081098@gmail.com&gt;" />
       </list>
     </option>
@@ -193,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548684459431</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Minor refactor">
+      <created>1566913711785</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1566913711785</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -230,10 +204,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Resources Explorer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20272315" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20272315" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -242,7 +215,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27168575" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5515548" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -301,7 +274,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor" />
+    <MESSAGE value="Minor refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor refactor" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.1.6/lib/meta.dart">
@@ -742,31 +716,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/rxdart-0.22.2/lib/src/observables/observable.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="2634" column="52" selection-start-line="2634" selection-start-column="52" selection-end-line="2634" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/login/login_contract.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
+        <state relative-caret-position="114">
           <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/login/login_interactor_impl.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        <state relative-caret-position="89">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/rxdart-0.22.2/lib/src/observables/observable.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="2629" column="16" selection-start-line="2629" selection-start-column="16" selection-end-line="2629" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/login/login_bloc.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="90" column="28" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="28" />
+        <state relative-caret-position="190">
+          <caret line="97" column="4" selection-start-line="97" selection-start-column="4" selection-end-line="97" selection-end-column="4" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>

@@ -5,6 +5,7 @@ import 'package:validation_form_bloc/api/api.dart';
 import 'package:validation_form_bloc/login/login_bloc.dart';
 import 'package:validation_form_bloc/login/login_contract.dart';
 import 'package:validation_form_bloc/login/login_interactor_impl.dart';
+import 'package:validation_form_bloc/validator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key key}) : super(key: key);
@@ -25,33 +26,6 @@ class _LoginPageState extends State<LoginPage> {
 
     _loginBloc = LoginBloc(LoginInteractorImpl(LoginApi()));
     _subscription = _loginBloc.message$.listen(_handleLoginMessage);
-  }
-
-  _showSnackBar(String msg) {
-    _scaffoldKey.currentState?.showSnackBar(
-      SnackBar(
-        content: Text(msg),
-        duration: const Duration(seconds: 2),
-      ),
-    );
-  }
-
-  _handleLoginMessage(LoginMessage message) async {
-    if (message is LoginSuccessMessage) {
-      _showSnackBar('Sign in successfully');
-
-      await Future.delayed(const Duration(seconds: 2));
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage(message.token)),
-      );
-    }
-    if (message is LoginErrorMessage) {
-      _showSnackBar(message.error.toString());
-    }
-    if (message is InvalidInformationMessage) {
-      _showSnackBar('Invalid information');
-    }
   }
 
   @override
@@ -142,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildPasswordField() {
-    return StreamBuilder<String>(
+    return StreamBuilder<Set<ValidationError>>(
       stream: _loginBloc.passwordError$,
       builder: (context, snapshot) {
         return TextField(
@@ -151,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
           maxLines: 1,
           onChanged: _loginBloc.passwordChanged,
           decoration: InputDecoration(
-            errorText: snapshot.data,
+            errorText: _getMessage(snapshot.data),
             labelText: 'Password',
           ),
         );
@@ -160,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildEmailField() {
-    return StreamBuilder<String>(
+    return StreamBuilder<Set<ValidationError>>(
       stream: _loginBloc.emailError$,
       builder: (context, snapshot) {
         return TextField(
@@ -168,12 +142,53 @@ class _LoginPageState extends State<LoginPage> {
           maxLines: 1,
           onChanged: _loginBloc.emailChanged,
           decoration: InputDecoration(
-            errorText: snapshot.data,
+            errorText: _getMessage(snapshot.data),
             labelText: 'Email',
           ),
         );
       },
     );
+  }
+
+  ///Helper method
+  void _showSnackBar(String msg) {
+    _scaffoldKey.currentState?.showSnackBar(
+      SnackBar(
+        content: Text(msg),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  /// Here, we can show SnackBar or navigate to other page based on [message]
+  void _handleLoginMessage(LoginMessage message) async {
+    if (message is LoginSuccessMessage) {
+      _showSnackBar('Sign in successfully');
+
+      await Future.delayed(const Duration(seconds: 2));
+      await Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage(message.token)),
+      );
+      return;
+    }
+    if (message is LoginErrorMessage) {
+      return _showSnackBar(message.error.toString());
+    }
+    if (message is InvalidInformationMessage) {
+      return _showSnackBar('Invalid information');
+    }
+  }
+
+  /// Here, we can return localized description from [errors]
+  String _getMessage(Set<ValidationError> errors) {
+    if (errors.contains(ValidationError.invalidEmail)) {
+      return '';
+    }
+    if (errors.contains(ValidationError.tooShortPassword)) {
+      return '';
+    }
+    return null;
   }
 }
 

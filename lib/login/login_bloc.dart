@@ -8,28 +8,20 @@ import 'package:validation_form_bloc/validator.dart';
 
 // ignore_for_file: close_sinks
 
-///
 /// BLoC handle validate form and login
-///
 class LoginBloc {
-  ///
   /// Input functions
-  ///
   final void Function(String) emailChanged;
   final void Function(String) passwordChanged;
   final void Function() submitLogin;
 
-  ///
   /// Streams
-  ///
-  final Stream<String> emailError$;
-  final Stream<String> passwordError$;
+  final Stream<Set<ValidationError>> emailError$;
+  final Stream<Set<ValidationError>> passwordError$;
   final ValueObservable<bool> isLoading$;
   final Stream<LoginMessage> message$;
 
-  ///
   /// Clean up
-  ///
   final void Function() dispose;
 
   LoginBloc._({
@@ -45,42 +37,30 @@ class LoginBloc {
 
   factory LoginBloc(LoginInteractor interactor) {
     assert(interactor != null);
+    const validator = Validator();
 
     // Stream controllers
-    final emailSubject = BehaviorSubject.seeded('');
-    final passwordSubject = BehaviorSubject.seeded('');
-    final isLoadingSubject = BehaviorSubject.seeded(false);
-    final submitLoginSubject = PublishSubject<void>();
+    final emailS = BehaviorSubject.seeded('');
+    final passwordS = BehaviorSubject.seeded('');
+    final isLoadingS = BehaviorSubject.seeded(false);
+    final submitLoginS = PublishSubject<void>();
+    final subjects = [emailS, passwordS, isLoadingS, submitLoginS];
 
     // Email error and password error stream
-    final emailError$ = emailSubject.stream
-        .map((email) {
-          if (Validator.isValidEmail(email)) {
-            return null;
-          }
-          return 'Invalid email address';
-        })
-        .distinct()
-        .share();
+    final emailError$ = emailS.map(validator.validateEmail).distinct().share();
 
-    final passwordError$ = passwordSubject.stream
-        .map((password) {
-          if (Validator.isValidPassword(password)) {
-            return null;
-          }
-          return 'Password must be at least 6 characters';
-        })
-        .distinct()
-        .share();
+    final passwordError$ =
+        passwordS.map(validator.validatePassword).distinct().share();
 
-    // Submit, credential stream
-    final isValidSubmit$ = Observable.combineLatest(
-      [emailError$, passwordError$],
-      (errors) => errors.every((e) => e == null),
-    ).share();
-
-    final submit$ = submitLoginSubject.stream
-        .withLatestFrom(isValidSubmit$, (_, bool isValid) => isValid)
+    // Submit stream
+    final submit$ = submitLoginS
+        .withLatestFrom<bool, bool>(
+          Observable.combineLatest<Set<ValidationError>, bool>(
+            [emailError$, passwordError$],
+            (listOfSets) => listOfSets.every((errorsSet) => errorsSet.isEmpty),
+          ),
+          (_, isValid) => isValid,
+        )
         .share();
 
     // Message stream
@@ -89,8 +69,8 @@ class LoginBloc {
         submit$
             .where((isValid) => isValid)
             .withLatestFrom2(
-              emailSubject,
-              passwordSubject,
+              emailS,
+              passwordS,
               (_, email, password) => Credential(
                 email: email,
                 password: password,
@@ -99,7 +79,7 @@ class LoginBloc {
             .exhaustMap(
               (credential) => interactor.performLogin(
                 credential,
-                isLoadingSubject,
+                isLoadingS,
               ),
             ),
         submit$
@@ -108,34 +88,15 @@ class LoginBloc {
       ],
     ).publish();
 
-    // Listen to debug
-    final streams = <String, Stream>{
-      'emailError': emailError$,
-      'passwordError': passwordError$,
-      'isLoading': isLoadingSubject,
-      'isValidSubmit': isValidSubmit$,
-      'message': message$,
-    };
-    final subscriptions = streams.keys.map((tag) =>
-        streams[tag].listen((data) => print('[LOGIN_BLOC] $tag=$data')));
-    final disposeBag = DisposeBag([
-      ...subscriptions,
-      message$.connect(),
-      emailSubject,
-      passwordSubject,
-      isLoadingSubject,
-      submitLoginSubject,
-    ]);
-
     return LoginBloc._(
-      emailChanged: emailSubject.add,
-      passwordChanged: passwordSubject.add,
-      submitLogin: () => submitLoginSubject.add(null),
+      emailChanged: emailS.add,
+      passwordChanged: passwordS.add,
+      submitLogin: () => submitLoginS.add(null),
       emailError$: emailError$,
       passwordError$: passwordError$,
-      isLoading$: isLoadingSubject.stream,
+      isLoading$: isLoadingS.stream,
       message$: message$,
-      dispose: disposeBag.dispose,
+      dispose: DisposeBag([message$.connect(), ...subjects]).dispose,
     );
   }
 }

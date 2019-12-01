@@ -23,6 +23,7 @@ class LoginInteractorImpl implements LoginInteractor {
         .doOnDone(() => isLoadingSink.add(false));
   }
 
+  /// Mapper map [LoginResponse] to [LoginMessage]
   static LoginMessage _responseToMessage(LoginResponse response) {
     if (response is SuccessResponse) {
       return LoginSuccessMessage(response.token);

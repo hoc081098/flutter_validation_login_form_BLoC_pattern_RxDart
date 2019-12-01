@@ -1,14 +1,10 @@
 import 'package:validation_form_bloc/api/response.dart';
 
-///
-/// Login api
-///
+/// Mock login api
 class LoginApi {
   bool _success = false;
 
-  ///
   /// Simulate login
-  ///
   Future<LoginResponse> login(String email, String password) {
     print('[API] login email=$email, password=$password');
 

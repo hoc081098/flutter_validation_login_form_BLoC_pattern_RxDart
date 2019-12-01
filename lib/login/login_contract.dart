@@ -1,8 +1,6 @@
 import 'package:meta/meta.dart';
 
-///
 /// Credential contains email and password
-///
 class Credential {
   final String email;
   final String password;
@@ -13,9 +11,7 @@ class Credential {
   String toString() => 'Credential{email: $email, password: $password}';
 }
 
-///
 /// Interactor
-///
 abstract class LoginInteractor {
   Stream<LoginMessage> performLogin(
     Credential credential,
@@ -23,9 +19,7 @@ abstract class LoginInteractor {
   );
 }
 
-///
 /// Login message
-///
 @immutable
 abstract class LoginMessage {}
 

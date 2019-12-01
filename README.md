@@ -1,12 +1,14 @@
-# validation_form_bloc
+# flutter_validation_login_form_BLoC_pattern_RxDart
 
-A new Flutter project.
+Sample Mobile Validation using `rxdart` and `BLoC pattern`
+
+# Screenshot
 
 [Video demo](https://www.youtube.com/watch?v=i5gS2BToNZs&feature=youtu.be)
 
-<br>
-
-<img src="screenshots/demo.gif" width="480" alt="Cannot load image"/>
+<p align="center">
+<img src="screenshots/demo.gif" height="480" alt="Cannot load image"/>
+</p>
 
 ## Getting Started
 

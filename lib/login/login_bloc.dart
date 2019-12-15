@@ -18,7 +18,7 @@ class LoginBloc {
   /// Streams
   final Stream<Set<ValidationError>> emailError$;
   final Stream<Set<ValidationError>> passwordError$;
-  final ValueObservable<bool> isLoading$;
+  final ValueStream<bool> isLoading$;
   final Stream<LoginMessage> message$;
 
   /// Clean up
@@ -43,7 +43,7 @@ class LoginBloc {
     final emailS = BehaviorSubject.seeded('');
     final passwordS = BehaviorSubject.seeded('');
     final isLoadingS = BehaviorSubject.seeded(false);
-    final submitLoginS = PublishSubject<void>();
+    final submitLoginS = StreamController<void>();
     final subjects = [emailS, passwordS, isLoadingS, submitLoginS];
 
     // Email error and password error stream
@@ -53,10 +53,10 @@ class LoginBloc {
         passwordS.map(validator.validatePassword).distinct().share();
 
     // Submit stream
-    final submit$ = submitLoginS
+    final submit$ = submitLoginS.stream
         .throttleTime(const Duration(milliseconds: 500))
         .withLatestFrom<bool, bool>(
-          Observable.combineLatest<Set<ValidationError>, bool>(
+          Rx.combineLatest<Set<ValidationError>, bool>(
             [emailError$, passwordError$],
             (listOfSets) => listOfSets.every((errorsSet) => errorsSet.isEmpty),
           ),
@@ -65,7 +65,7 @@ class LoginBloc {
         .share();
 
     // Message stream
-    final message$ = Observable.merge(
+    final message$ = Rx.merge(
       [
         submit$
             .where((isValid) => isValid)

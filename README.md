@@ -17,7 +17,7 @@ Sample Mobile Validation using `rxdart` and `BLoC pattern`
 final emailS = BehaviorSubject.seeded('');
 final passwordS = BehaviorSubject.seeded('');
 final isLoadingS = BehaviorSubject.seeded(false);
-final submitLoginS = PublishSubject<void>();
+final submitLoginS = StreamController<void>();
 final subjects = [emailS, passwordS, isLoadingS, submitLoginS];
 ```
 ### 2. Map email text and password text to set of errors
@@ -31,10 +31,10 @@ final passwordError$ =
 ### 3. Combine email errors stream and password errors stream to valid stream
 ```dart
 // Submit stream
-final submit$ = submitLoginS
+final submit$ = submitLoginS.stream
     .throttleTime(const Duration(milliseconds: 500))
     .withLatestFrom<bool, bool>(
-      Observable.combineLatest<Set<ValidationError>, bool>(
+      Rx.combineLatest<Set<ValidationError>, bool>(
         [emailError$, passwordError$],
         (listOfSets) => listOfSets.every((errorsSet) => errorsSet.isEmpty),
       ),
@@ -45,7 +45,7 @@ final submit$ = submitLoginS
 ### 4. Perform login effect based on submit stream
 ```dart
 // Message stream
-final message$ = Observable.merge(
+final message$ = Rx.merge(
   [
     submit$
         .where((isValid) => isValid)

@@ -1,17 +1,26 @@
 name: validation_form_bloc
 description: Sample Mobile Validation using rxdart and BLoC pattern
 
+publish_to: 'none'
+version: 1.0.0+1
+
 environment:
-  sdk: '>=2.6.0 <3.0.0'
+  sdk: '>=2.12.0-0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.2
-  rxdart: ^0.23.1
-  disposebag: ^1.0.0+1
+  cupertino_icons: ^1.0.1+1
+  rxdart: ^0.26.0-nullsafety.0
+  disposebag: ^1.5.0-nullsafety.0
+  flutter_disposebag: ^1.1.0-nullsafety.0
+  rxdart_ext:
+    git:
+      url: https://github.com/hoc081098/rxdart_ext.git
+      ref: master
 
 dev_dependencies:
+  pedantic: ^1.10.0-nullsafety.3
   flutter_test:
     sdk: flutter
 

@@ -1,4 +1,4 @@
-import 'package:validation_form_bloc/api/response.dart';
+import 'response.dart';
 
 /// Mock login api
 class LoginApi {
@@ -13,7 +13,7 @@ class LoginApi {
         'FtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 
     final response =
-        _success ? SuccessResponse(token) : ErrorResponse("Error api response");
+        _success ? SuccessResponse(token) : ErrorResponse('Error api response');
     _success = !_success;
 
     return Future.delayed(

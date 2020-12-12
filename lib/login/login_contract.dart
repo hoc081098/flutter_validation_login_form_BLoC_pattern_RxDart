@@ -5,7 +5,7 @@ class Credential {
   final String email;
   final String password;
 
-  const Credential({this.email, this.password});
+  const Credential({required this.email, required this.password});
 
   @override
   String toString() => 'Credential{email: $email, password: $password}';
@@ -13,10 +13,7 @@ class Credential {
 
 /// Interactor
 abstract class LoginInteractor {
-  Stream<LoginMessage> performLogin(
-    Credential credential,
-    Sink<bool> isLoadingSink,
-  );
+  Stream<LoginMessage> performLogin(Credential credential);
 }
 
 /// Login message

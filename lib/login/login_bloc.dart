@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:disposebag/disposebag.dart';
-import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:validation_form_bloc/login/login_contract.dart';
-import 'package:validation_form_bloc/validator.dart';
+
+import '../validator.dart';
+import 'login_contract.dart';
 
 // ignore_for_file: close_sinks
 
@@ -25,25 +25,22 @@ class LoginBloc {
   final void Function() dispose;
 
   LoginBloc._({
-    @required this.emailChanged,
-    @required this.passwordChanged,
-    @required this.submitLogin,
-    @required this.emailError$,
-    @required this.passwordError$,
-    @required this.isLoading$,
-    @required this.message$,
-    @required this.dispose,
+    required this.emailChanged,
+    required this.passwordChanged,
+    required this.submitLogin,
+    required this.emailError$,
+    required this.passwordError$,
+    required this.isLoading$,
+    required this.message$,
+    required this.dispose,
   });
 
-  factory LoginBloc(LoginInteractor interactor) {
-    assert(interactor != null);
-    const validator = Validator();
-
+  factory LoginBloc(LoginInteractor interactor, Validator validator) {
     // Stream controllers
-    final emailS = BehaviorSubject.seeded('');
-    final passwordS = BehaviorSubject.seeded('');
-    final isLoadingS = BehaviorSubject.seeded(false);
-    final submitLoginS = StreamController<void>();
+    final emailS = PublishSubject<String>(sync: true);
+    final passwordS = PublishSubject<String>(sync: true);
+    final isLoadingS = BehaviorSubject.seeded(false, sync: true);
+    final submitLoginS = StreamController<void>(sync: true);
     final subjects = [emailS, passwordS, isLoadingS, submitLoginS];
 
     // Email error and password error stream
@@ -59,7 +56,7 @@ class LoginBloc {
           Rx.combineLatest<Set<ValidationError>, bool>(
             [emailError$, passwordError$],
             (listOfSets) => listOfSets.every((errorsSet) => errorsSet.isEmpty),
-          ),
+          ).startWith(false),
           (_, isValid) => isValid,
         )
         .share();
@@ -72,16 +69,16 @@ class LoginBloc {
             .withLatestFrom2(
               emailS,
               passwordS,
-              (_, email, password) => Credential(
+              (_, String email, String password) => Credential(
                 email: email,
                 password: password,
               ),
             )
             .exhaustMap(
-              (credential) => interactor.performLogin(
-                credential,
-                isLoadingS,
-              ),
+              (credential) => interactor
+                  .performLogin(credential)
+                  .doOnListen(() => isLoadingS.add(true))
+                  .doOnCancel(() => isLoadingS.add(false)),
             ),
         submit$
             .where((isValid) => !isValid)
@@ -97,7 +94,7 @@ class LoginBloc {
       passwordError$: passwordError$,
       isLoading$: isLoadingS.stream,
       message$: message$,
-      dispose: DisposeBag([message$.connect(), ...subjects]).dispose,
+      dispose: DisposeBag([...subjects, message$.connect()]).dispose,
     );
   }
 }

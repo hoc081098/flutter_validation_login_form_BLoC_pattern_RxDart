@@ -1,7 +1,5 @@
 extension ValidationExtension on String {
-  bool isValidPassword() {
-    return this.length >= 6;
-  }
+  bool isValidPassword() => length >= 6;
 
   bool isValidEmail() {
     const _emailRegExpString = r'[a-zA-Z0-9\+\.\_\%\-\+]{1,256}\@[a-zA-Z0-9]'
@@ -20,7 +18,7 @@ class Validator {
     if (email.isValidEmail()) {
       return const {};
     }
-    return {ValidationError.invalidEmail};
+    return const {ValidationError.invalidEmail};
   }
 
   /// return set of [ValidationError]s (return empty set if password is valid)
@@ -28,6 +26,6 @@ class Validator {
     if (password.isValidPassword()) {
       return const {};
     }
-    return {ValidationError.tooShortPassword};
+    return const {ValidationError.tooShortPassword};
   }
 }

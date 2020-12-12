@@ -1,39 +1,43 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:validation_form_bloc/api/api.dart';
-import 'package:validation_form_bloc/login/login_bloc.dart';
-import 'package:validation_form_bloc/login/login_contract.dart';
-import 'package:validation_form_bloc/login/login_interactor_impl.dart';
-import 'package:validation_form_bloc/validator.dart';
+import 'package:flutter_disposebag/flutter_disposebag.dart';
+import 'package:pedantic/pedantic.dart';
+
+import '../api/api.dart';
+import '../ext.dart';
+import '../login/login_bloc.dart';
+import '../login/login_contract.dart';
+import '../login/login_interactor_impl.dart';
+import '../validator.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
+class _LoginPageState extends State<LoginPage> with DisposeBagMixin<LoginPage> {
+  late final LoginBloc loginBloc = LoginBloc(
+    LoginInteractorImpl(LoginApi()),
+    const Validator(),
+  );
 
-  LoginBloc _loginBloc;
-  StreamSubscription _subscription;
+  late final Future<bool> listen =
+      loginBloc.message$.listen(_handleLoginMessage).disposedBy(bag);
 
   @override
-  void initState() {
-    super.initState();
-
-    _loginBloc = LoginBloc(LoginInteractorImpl(LoginApi()));
-    _subscription = _loginBloc.message$.listen(_handleLoginMessage);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final _ =
+        listen; // do not remove this line, it triggers lazy variable valuation.
   }
 
   @override
   void dispose() {
-    _subscription.cancel();
-    _loginBloc.dispose();
-
     super.dispose();
+    loginBloc.dispose();
   }
 
   @override
@@ -41,7 +45,6 @@ class _LoginPageState extends State<LoginPage> {
     const sizedBox = SizedBox(height: 24.0);
 
     return Scaffold(
-      key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Validation form BLoC'),
       ),
@@ -97,18 +100,18 @@ class _LoginPageState extends State<LoginPage> {
         splashColor: Colors.cyanAccent.shade100,
         color: Colors.cyan.shade400,
         child: Text('Login'),
-        onPressed: _loginBloc.submitLogin,
+        onPressed: loginBloc.submitLogin,
       ),
     );
   }
 
   Widget _buildLoadingIndicator() {
     return StreamBuilder<bool>(
-      stream: _loginBloc.isLoading$,
-      initialData: _loginBloc.isLoading$.value,
+      stream: loginBloc.isLoading$,
+      initialData: loginBloc.isLoading$.value,
       builder: (context, snapshot) {
         return Opacity(
-          opacity: snapshot.data ? 1.0 : 0.0,
+          opacity: snapshot.requireData ? 1.0 : 0.0,
           child: CircularProgressIndicator(),
         );
       },
@@ -117,17 +120,18 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildPasswordField() {
     return StreamBuilder<Set<ValidationError>>(
-      stream: _loginBloc.passwordError$,
+      stream: loginBloc.passwordError$,
       builder: (context, snapshot) {
         return TextField(
           keyboardType: TextInputType.text,
           obscureText: true,
           maxLines: 1,
-          onChanged: _loginBloc.passwordChanged,
+          onChanged: loginBloc.passwordChanged,
           decoration: InputDecoration(
             errorText: _getMessage(snapshot.data),
             labelText: 'Password',
           ),
+          textInputAction: TextInputAction.done,
         );
       },
     );
@@ -135,53 +139,45 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildEmailField() {
     return StreamBuilder<Set<ValidationError>>(
-      stream: _loginBloc.emailError$,
+      stream: loginBloc.emailError$,
       builder: (context, snapshot) {
         return TextField(
           keyboardType: TextInputType.emailAddress,
           maxLines: 1,
-          onChanged: _loginBloc.emailChanged,
+          onChanged: loginBloc.emailChanged,
           decoration: InputDecoration(
             errorText: _getMessage(snapshot.data),
             labelText: 'Email',
           ),
+          textInputAction: TextInputAction.next,
         );
       },
-    );
-  }
-
-  ///Helper method
-  void _showSnackBar(String msg) {
-    _scaffoldKey.currentState?.showSnackBar(
-      SnackBar(
-        content: Text(msg),
-        duration: const Duration(seconds: 2),
-      ),
     );
   }
 
   /// Here, we can show SnackBar or navigate to other page based on [message]
   void _handleLoginMessage(LoginMessage message) async {
     if (message is LoginSuccessMessage) {
-      _showSnackBar('Sign in successfully');
+      showSnackBar('Sign in successfully');
 
       await Future.delayed(const Duration(seconds: 2));
-      await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage(message.token)),
+      return unawaited(
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage(message.token)),
+        ),
       );
-      return;
     }
     if (message is LoginErrorMessage) {
-      return _showSnackBar(message.error.toString());
+      return showSnackBar(message.error.toString());
     }
     if (message is InvalidInformationMessage) {
-      return _showSnackBar('Invalid information');
+      return showSnackBar('Invalid information');
     }
   }
 
   /// Here, we can return localized description from [errors]
-  String _getMessage(Set<ValidationError> errors) {
+  static String? _getMessage(Set<ValidationError>? errors) {
     if (errors == null || errors.isEmpty) {
       return null;
     }
@@ -209,7 +205,7 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Text(
           token,
-          style: Theme.of(context).textTheme.body1,
+          style: Theme.of(context).textTheme.bodyText2,
         ),
       ),
     );

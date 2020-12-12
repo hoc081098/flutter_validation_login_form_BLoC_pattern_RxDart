@@ -1,21 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f9ec699-918a-4121-a167-1ee425f5e256" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/flutter_validation_form_BLoC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flutter_validation_form_BLoC.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="2ea9d2be-1148-4c16-81a3-e88292789a71" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/kotlin/com/hoc/validation_form_bloc/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/values-night/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Runner/Runner-Bridging-Header.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/icons/Icon-192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/icons/Icon-512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/flutter_validation_form_BLoC.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.metadata" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/example/validationformbloc/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ios/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/main.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/api/api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/api.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/login/login_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/login_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/login/login_contract.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/login_contract.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/login/login_interactor_impl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/login_interactor_impl.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/login/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/validator.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/values/strings_en.arb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ext.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validation_form_bloc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/validation_form_bloc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validation_form_bloc_android.iml" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_4_API_26" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -23,149 +79,107 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>com.example.validationformbloc</find>
-      <find>com.hoc.validationformbloc</find>
-      <find>debugPrint('Call builder');</find>
-      <find>StreamBuilder</find>
-      <find>new</find>
-      <find>[LOGIN_INTERACTOR]</find>
-    </findStrings>
-    <dirStrings>
-      <dir>C:\Users\Admin\Desktop\flutter_validation_form_BLoC</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="Petrus Nguyễn Thái Học &lt;hoc081098@gmail.com&gt;" />
-        <option value="Peter Hoc &lt;hoc081098@gmail.com&gt;" />
-      </list>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="20" />
-    <option name="width" value="1346" />
-    <option name="height" value="688" />
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="pzh6hqlq" />
   </component>
-  <component name="ProjectId" id="1V0iazcRXwfbTlKNbXEEe83e66s" />
-  <component name="ProjectReloadState">
-    <option name="STATE" value="1" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548685074612" />
-    <property name="dart.analysis.tool.window.force.activate" value="false" />
-    <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\Admin\AppData\Local\JetBrains\Toolbox\apps\IDEA-C\ch-0\202.6948.69\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
     </option>
   </component>
-  <component name="RunManager" selected="Flutter.main.dart">
-    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" singleton="false">
+  <component name="ProjectId" id="1lYjgBGnjy1HnnV5EZ1R4bm3VZ8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\Documents\validation_form_bloc\validation_form_bloc\android\app\src\main\kotlin\com\hoc\validation_form_bloc" />
+      <recent name="C:\Users\Admin\Desktop\Documents\validation_form_bloc\validation_form_bloc" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\Documents\validation_form_bloc\validation_form_bloc\lib" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
     </configuration>
-    <configuration name="tests in widget_test.dart" type="FlutterTestConfigType" factoryName="Flutter Test" temporary="true" nameIsGenerated="true">
-      <option name="testFile" value="$PROJECT_DIR$/test/widget_test.dart" />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Flutter Test.tests in widget_test.dart" />
-      </list>
-    </recent_temporary>
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1f9ec699-918a-4121-a167-1ee425f5e256" name="Default Changelist" comment="" />
-      <created>1548654152006</created>
+      <changelist id="2ea9d2be-1148-4c16-81a3-e88292789a71" name="Default Changelist" comment="" />
+      <created>1607781039980</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1548654152006</updated>
+      <updated>1607781039980</updated>
     </task>
-    <task id="LOCAL-00001" summary="Refactor">
-      <created>1548684459431</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1548684459431</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Minor refactor">
-      <created>1566913711785</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1566913711785</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 18h 35m 02s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 18h 36m 38s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 18h 38m 14s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 18h 38m 59s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 18h 44m 33s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 18h 45m 22s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 18h 46m 20s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 18h 48m 50s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 18h 50m 17s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-    <history-entry file="tests_in_widget_test_dart - 2019.01.28 at 19h 56m 27s.xml">
-      <configuration name="tests in widget_test.dart" configurationId="FlutterTestConfigType" />
-    </history-entry>
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Refactor" />
-    <MESSAGE value="Minor refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor refactor" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="92" y="92" width="1182" height="544" key="AVDManager" timestamp="1607782871457">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1607782871457" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1607782253299">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1607782253299" />
+    <state width="1323" height="420" key="GridCell.Tab.0.bottom" timestamp="1607783881438">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="420" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607783881438" />
+    <state width="1323" height="420" key="GridCell.Tab.0.center" timestamp="1607783881437">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="420" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1607783881437" />
+    <state width="1323" height="420" key="GridCell.Tab.0.left" timestamp="1607783881437">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="420" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1607783881437" />
+    <state width="1323" height="420" key="GridCell.Tab.0.right" timestamp="1607783881438">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="420" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607783881438" />
+    <state x="318" y="66" key="RollbackChangesDialog" timestamp="1607781656796">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="318" y="66" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1607781656796" />
+    <state x="184" y="8" key="SettingsEditor" timestamp="1607781129411">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="8" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607781129411" />
+    <state x="186" y="97" width="790" height="592" key="find.popup" timestamp="1607781766190">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="186" y="97" width="790" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1607781766190" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1607781836088">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1607781836088" />
   </component>
 </project>

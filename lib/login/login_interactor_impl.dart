@@ -1,7 +1,9 @@
 import 'package:rxdart/rxdart.dart';
-import 'package:validation_form_bloc/api/api.dart';
-import 'package:validation_form_bloc/api/response.dart';
-import 'package:validation_form_bloc/login/login_contract.dart';
+import 'package:rxdart_ext/rxdart_ext.dart';
+
+import '../api/api.dart';
+import '../api/response.dart';
+import 'login_contract.dart';
 
 class LoginInteractorImpl implements LoginInteractor {
   final LoginApi _api;
@@ -9,21 +11,13 @@ class LoginInteractorImpl implements LoginInteractor {
   const LoginInteractorImpl(this._api);
 
   @override
-  Stream<LoginMessage> performLogin(
-    Credential credential,
-    Sink<bool> isLoadingSink,
-  ) {
-    print('[LOGIN_INTERACTOR] $credential');
+  Stream<LoginMessage> performLogin(Credential credential) =>
+      Rx.fromCallable(() => _api.login(credential.email, credential.password))
+          .debug(identifier: 'LoginInteractorImpl::performLogin $credential')
+          .onErrorReturnWith((e) => ErrorResponse(e))
+          .map(_responseToMessage);
 
-    return Rx.defer(() => Stream.fromFuture(
-            _api.login(credential.email, credential.password)))
-        .doOnListen(() => isLoadingSink.add(true))
-        .onErrorReturnWith((e) => ErrorResponse(e))
-        .map(_responseToMessage)
-        .doOnDone(() => isLoadingSink.add(false));
-  }
-
-  /// Mapper map [LoginResponse] to [LoginMessage]
+  /// Mapper that maps [LoginResponse] to [LoginMessage]
   static LoginMessage _responseToMessage(LoginResponse response) {
     if (response is SuccessResponse) {
       return LoginSuccessMessage(response.token);
@@ -31,6 +25,6 @@ class LoginInteractorImpl implements LoginInteractor {
     if (response is ErrorResponse) {
       return LoginErrorMessage(response.error);
     }
-    return LoginErrorMessage("Unknown response $response");
+    return LoginErrorMessage('Unknown response $response');
   }
 }

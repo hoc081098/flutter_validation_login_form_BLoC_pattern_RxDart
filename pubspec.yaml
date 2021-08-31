@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.1+1
-  rxdart: ^0.26.0-nullsafety.0
+  rxdart: ^0.27.0
   disposebag: ^1.5.0-nullsafety.0
   flutter_disposebag: ^1.1.0-nullsafety.0
   rxdart_ext:
